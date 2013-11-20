@@ -1,0 +1,21 @@
+{
+  "name": "inject",
+  "version": "0.0.0",
+  "devDependencies": {
+    "qunit": "~1.12.0",
+    "requirejs": "~2.1.9"
+  },
+  "authors": [
+    "hrsh7th <hrsh7th@gmail.com>"
+  ],
+  "description": "dependency injection for requirejs.",
+  "main": "lib/inject.js",
+  "keywords": [
+    "requirejs",
+    "dependency-injection",
+    "dependency",
+    "injection",
+    "di"
+  ],
+  "license": "MIT"
+}
