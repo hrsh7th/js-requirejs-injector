@@ -1,4 +1,6 @@
 # requirejs-injector.
+#
+[![Build Status](https://travis-ci.org/hrsh7th/js-requirejs-injector.png?branch=master)](https://travis-ci.org/hrsh7th/js-requirejs-injector)
 
 ## description.
 

@@ -9,7 +9,7 @@
     "hrsh7th <hrsh7th@gmail.com>"
   ],
   "description": "dependency injection for requirejs.",
-  "main": "lib/inject.js",
+  "main": "dist/requirejs-injector.0.0.1.min.js",
   "keywords": [
     "requirejs",
     "dependency-injection",
