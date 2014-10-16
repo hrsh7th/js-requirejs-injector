@@ -1,4 +1,4 @@
-# inject.
+# requirejs-injector.
 
 ## description.
 
@@ -19,12 +19,15 @@ define([], function () {
 
 ```javascript:runner.js
 asyncTest(function () {
-  inject('module1', function () {
+  var ctx = injector();
+
+  ctx.inject('module1', (function() {
     return {
       name: 'injected-module1'
     };
-  }).
-  require(['module1'], function (module1) {
+  } ());
+
+  ctx.require(['module1'], function(module1) {
     ok(module1.name === 'injected-module1'); // module1 injected!
   });
 });
