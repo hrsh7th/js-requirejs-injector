@@ -1,12 +1,9 @@
 /*global test:false, ok:false */
 
 (function() {
+
   'use strict';
 
-  /**
-   * inject(path, factory).require([path], function(path) {
-   * });
-   */
   asyncTest('Injectable Module.', function() {
     var ctx = injector();
 
@@ -28,10 +25,6 @@
     });
   });
 
-  /**
-   * inject(path, factory).require([otherpath], function(otherpath) {
-   * });
-   */
   asyncTest('Injectable Nested Module.', function() {
     var ctx = injector();
 
@@ -53,11 +46,6 @@
     });
   });
 
-  /**
-   * inject(path, factory).require([], function() {
-   *   require();
-   * });
-   */
   asyncTest('Injected Require with Standard Require.', function() {
     var ctx = injector();
 
@@ -81,10 +69,6 @@
     });
   });
 
-  /**
-   * inject(path, factory).require(['require'], function(require) {
-   * });
-   */
   asyncTest('Injected Require with Injected Require.', function() {
     var ctx = injector();
 
@@ -109,10 +93,6 @@
     });
   });
 
-  /**
-   * inject(path1, factory).inject(path2, factory)...require([path], function(path1) {
-   * });
-   */
   asyncTest('Chainable Inject Call.', function() {
     var ctx = injector();
 
@@ -142,6 +122,29 @@
     ctx.require(['mock/Module1', 'mock/Module2'], function(Module1, Module2) {
       ok(Module1.id === 'InjectedModule1', Module1.id);
       ok(Module2.id === 'InjectedModule2', Module2.id);
+      start();
+    });
+  });
+
+  asyncTest('Load all context.', function() {
+    define.Module1LoadCount = 0;
+
+    var ctx1 = injector();
+    ctx1.require(['mock/Module2'], function(Module2) {
+      ok(define.Module1LoadCount === 1);
+
+      var ctx2 = injector();
+      ctx2.require(['mock/Module2'], function(Module2) {
+        ok(define.Module1LoadCount === 2);
+        start();
+      });
+    });
+  });
+
+  asyncTest('Inherit Named Module Definition', function() {
+    var ctx1 = injector();
+    ctx1.require(['NamedModule1'], function(NamedModule1) {
+      ok(NamedModule1.id === 'NamedModule1');
       start();
     });
   });

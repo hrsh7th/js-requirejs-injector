@@ -11,6 +11,22 @@
 	<script src="../bower_components/qunit/qunit/qunit.js"></script>
 	<script src="../bower_components/requirejs/require.js"></script>
 	<script src="../lib/injector.js"></script>
+	<script>
+		define('NamedModule1', [], function() {
+			'use strict';
+
+			function NamedModule1() {}
+
+			NamedModule1.id = 'NamedModule1';
+
+			if (!define.NamedModule1LoadCount) {
+				define.NamedModule1LoadCount = 0;
+			}
+			define.NamedModule1LoadCount++;
+
+			return NamedModule1;
+		});
+	</script>
 	<script src="test.js"></script>
 </body>
 </html>

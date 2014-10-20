@@ -1,6 +1,8 @@
-define(['mock/Module1'], function (Module1) {
+define(function (require) {
 
   'use strict';
+
+  var Module1 = require('mock/Module1');
 
   function Module2() {}
 
