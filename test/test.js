@@ -149,5 +149,26 @@
     });
   });
 
+  asyncTest('Require jQuery', function() {
+    var ctx1 = injector();
+    ctx1.require(['jquery'], function($) {
+      ok($);
+      start();
+    });
+  });
+
+  asyncTest('Require jQuery with Inject', function() {
+    var ctx1 = injector();
+    ctx1.inject('jquery', (function() {
+      return {
+        id: 'injected'
+      };
+    })());
+    ctx1.require(['jquery'], function($) {
+      ok($.id === 'injected');
+      start();
+    });
+  });
+
 }());
 

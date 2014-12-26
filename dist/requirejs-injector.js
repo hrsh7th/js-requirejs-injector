@@ -1,4 +1,4 @@
-/*! requirejs-injector - v0.0.3 - 2014-10-20
+/*! requirejs-injector - v0.0.3 - 2014-12-26
 * Copyright (c) 2014 hrsh7th <hrsh7th@gmail.com>; Licensed MIT */
 (function (global, factory) {
   'use strict';
@@ -18,7 +18,8 @@
   (function overrideDefineFunction() {
     var originalDefine = global.define;
 
-    global.define = function(name, deps, callback) {
+    // hook global named module definition.
+    global.define = extend(function(name, deps, callback) {
       if (typeof name === 'string') {
         namedModuleMap[name] = [name, deps, callback];
         for (var key in contextMap) {
@@ -28,14 +29,14 @@
         }
       }
       originalDefine(name, deps, callback);
-    };
+    }, originalDefine);
   })();
 
   /**
    * Injector.
    */
   function Injector() {
-    this.context = contextMap[context + injectCount++] = context + injectCount++;
+    this.context = contextMap[context + (++injectCount)] = context + injectCount;
 
     this.req = require.config(extend({}, require.s.contexts._.config, { context: this.context }));
     this.defined = require.s.contexts[this.context].defined;

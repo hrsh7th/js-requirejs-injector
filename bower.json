@@ -3,7 +3,8 @@
   "version": "0.0.3",
   "devDependencies": {
     "qunit": "~1.12.0",
-    "requirejs": "~2.1.9"
+    "requirejs": "~2.1.9",
+    "jquery": "~2.1.3"
   },
   "authors": [
     "hrsh7th <hrsh7th@gmail.com>"
